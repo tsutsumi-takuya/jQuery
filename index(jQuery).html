@@ -58,5 +58,16 @@
 
 	</section>
 
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<script>
+
+		$(document).ready(function(){
+			$('.submenu h3').on('click', function(){
+				$(this).next().toggleClass('hidden');
+			});
+		});
+
+	</script>
 </body>
 </html>
