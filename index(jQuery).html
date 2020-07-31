@@ -62,9 +62,12 @@
 
 	<script>
 
-		$(document).ready(function(){
+		$(document).ready(function(){ // HTMLが読み込まれたらfunction内の処理を行う
 			$('.submenu h3').on('click', function(){
+			// '${セレクタ)'で要素の取得を行う、onメソッドで設定を行う => on('click'),on('submit')
 				$(this).next().toggleClass('hidden');
+				// $(this).next()で'this'をjQueryオブジェクトに変換し、イベントが発生したすぐ次の要素を取得
+				// 'toggleClass'メソッドはclass名が付いていなければ追加、付いていれば削除する
 			});
 		});
 
