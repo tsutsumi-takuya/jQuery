@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
+<meta charset="utf-8">
 <head>
 	<title>Check</title>
 
 	<style>
-
 		.list {
 			overflow: hidden;
 			margin: 0;
@@ -43,6 +43,57 @@
 		.green {
 			background-color: #7bc52e;
 		}
-
 	</style>
 </head>
+
+<body>
+	<section>
+		<ul class="list">
+			<li class="seminar" id="js">
+				<h2>Javascript勉強会</h2>
+				<p class="check">空き状況を確認</p>
+			</li>
+			<li class="seminar" id="security">
+				<h2>セキュリティ対策講座</h2>
+				<p class="check">空き状況を確認</p>
+			</li>
+			<li class="seminar" id="uiux">
+				<h2>UI/UXハッカソン</h2>
+				<p class="check">空き状況を確認</p>
+			</li>
+		</ul>
+	</section>
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<script>
+
+		$(document).ready(function(){
+			$.ajax({url: 'data.json', dataType: 'json'})
+			.done(function(data){
+				$(data).each(function(){
+					if(this.crowded === 'yes'){
+						var idName = '#' + this.id;
+						$(idName).find('.check').addClass('crowded');
+					}
+				});
+			})
+
+			.fail(function(){
+				window.alert('読み込みエラー');
+			});
+
+			$('.check').on('click', function(){
+				if($(this).hasClass('crowded')){
+					$(this).text('残席わずか').addClass('red');
+				}
+				else {
+					$(this).text('お席あります').addClass('green');
+				}
+			});
+		});
+
+	</script>
+
+</body>
+</html>
