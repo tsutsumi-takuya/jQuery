@@ -78,8 +78,6 @@
 	<header>
 		<div class="header-contents">
 			<div id="box_btn">Menu</div>
-			<h1>ボックスを開く・たたむ</h1>
-			<h2>アニメーション機能を使う</h2>
 		</div>
 	</header>
 
@@ -122,8 +120,10 @@
 		});
 
 		$(document).ready(function(){
-			$('#box_btn').on('click', function(){
-				$('#box').slideToggle();
+			$('#box_btn').on('click', function(){ // HTMLが読み込まれたらfunction内の処理を行う
+				$('#box').slideToggle('1000');
+				// 'slideToggle'で要素のボックスが閉じている時は開く、開いている時は閉じる
+				// 'slideToggle()'の()内で速度を変化させられる
 			});
 		});
 
