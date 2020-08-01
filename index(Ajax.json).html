@@ -70,8 +70,8 @@
 
 		$(document).ready(function(){
 			$.ajax({url: 'data.json', dataType: 'json'})
-			.done(function(data){
-				$(data).each(function(){
+			.done(function(data){ // dataがダウンロードされた際の処理
+				$(data).each(function(){ // eachメソッドで順に読み込む
 					if(this.crowded === 'yes'){
 						var idName = '#' + this.id;
 						$(idName).find('.check').addClass('crowded');
@@ -79,7 +79,7 @@
 				});
 			})
 
-			.fail(function(){
+			.fail(function(){ // dataがダウンロード出来なかった時の処理
 				window.alert('読み込みエラー');
 			});
 
